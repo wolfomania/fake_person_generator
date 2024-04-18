@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Generator</title>
+    <link rel="stylesheet" th:href="@{styles/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Person Generator</h1>
+    <form action="people-generator" method="post">
+        <div class="input-group">
+            <label for="numberOfPeople">Number of Persons:</label>
+            <input type="number" id="numberOfPeople" name="numberOfPeople" min="0" value="0">
+        </div>
+        <div class="input-group">
+            <label for="language">Choose Language:</label>
+            <select id="language" name="language">
+                <option value="en">English </option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="pl">Polish</option>
+                <option value="it">Italian</option>
+                <option value="uk">Ukrainian</option>
+                <option value="pt">Portuguese</option>
+                <option value="el">Greek</option>
+                <option value="sv">Swedish</option>
+            </select>
+        </div>
+        <div class="checkbox-group">
+            <h4>Additional Information (check all that apply):</h4>
+            <label for="university">University: </label>
+            <input type="checkbox" id="university" name="needUniversity">
+            <label for="address">Address: </label>
+            <input type="checkbox" id="address" name="needAddress">
+            <label for="countryOfOrigin">Country of Origin: </label>
+            <input type="checkbox" id="countryOfOrigin" name="needCountry">
+            <label for="jobTitle">Job Title: </label>
+            <input type="checkbox" id="jobTitle" name="needJobTitle">
+            <label for="favouriteAnimal">Favourite Animal: </label>
+            <input type="checkbox" id="favouriteAnimal" name="needFavouriteAnimal">
+        </div>
+        <button type="submit" class="generate">Generate</button>
+    </form>
+</div>
+<h2 th:if="${error != null}" th:text="'Error: ' + ${error}" class="error-message"></h2>
+<table th:if="${generatedPeople != null and generatedPeople.size() > 0}" >
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th th:if="${generatedPeople.get(0).getUniversity() != null}">University</th>
+        <th th:if="${generatedPeople.get(0).getAddress() != null}">Address</th>
+        <th th:if="${generatedPeople.get(0).getCountryOfOrigin() != null}">Country</th>
+        <th th:if="${generatedPeople.get(0).getJobTitle() != null}">Job Title</th>
+        <th th:if="${generatedPeople.get(0).getFavouriteAnimal() != null}">Favorite Animal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${generatedPeople}">
+        <td th:text="${person.getFirstName()}"></td>
+        <td th:text="${person.getLastName()}"></td>
+        <td th:text="${person.getDateOfBirth()}"></td>
+        <td th:if="${person.getUniversity() != null}" th:text="${person.getUniversity()}"></td>
+        <td th:if="${person.getAddress() != null}" th:text="${person.getAddress()}"></td>
+        <td th:if="${person.getCountryOfOrigin() != null}" th:text="${person.getCountryOfOrigin()}"></td>
+        <td th:if="${person.getJobTitle() != null}" th:text="${person.getJobTitle()}"></td>
+        <td th:if="${person.getFavouriteAnimal() != null}" th:text="${person.getFavouriteAnimal()}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

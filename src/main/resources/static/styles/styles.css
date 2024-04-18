@@ -1,0 +1,77 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.checkbox-group h4 {
+    margin-bottom: 10px;
+}
+
+.checkbox-group {
+    display: flex; /* Keep checkbox group as a flex container */
+    flex-wrap: wrap; /* Allow checkboxes to wrap to multiple lines if needed */
+    align-items: center; /* Vertically align checkboxes and labels within the group */
+    flex-direction: column;
+}
+
+.generate {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.generate:hover {
+    background-color: #0069d9;
+}
+
+.error-message {
+    color: darkred;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%; /* Optional, set a width for the table */
+}
+
+th {
+    background-color: #ddd;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+    background-color: #f2f2f2;
+}
